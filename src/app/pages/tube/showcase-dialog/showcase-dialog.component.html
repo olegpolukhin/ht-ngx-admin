@@ -1,0 +1,56 @@
+<nb-card>
+  <nb-card-header>{{ titleDig }}</nb-card-header>
+  <nb-card-body>
+
+    <div class="col-lg-12" *ngIf="!showError">
+      <div class="row">
+        <nb-tabset fullWidth>
+          <nb-tab tabTitle="General statistic tube">
+            <chart type="line" [data]="data" [options]="options"></chart>
+          </nb-tab>
+
+          <nb-tab tabTitle="Templates">
+            <div>
+              <h4>Templates that are currently in use</h4>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Template DEV</th>
+                    <th scope="col">Template Live</th>
+                    <th scope="col">Template Mobile DEV</th>
+                    <th scope="col">Template Mobile Live</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ template.template_dev }}</td>
+                    <td>{{ template.template_live }}</td>
+                    <td>{{ template.template_m_dev }}</td>
+                    <td>{{ template.template_m_live }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div>
+                <h4>All tube traffic. Using Desktop and Mobile Templates</h4>
+                <chart type="bar" [data]="dataTemplate" [options]="optionsTemplate"></chart>
+            </div>
+          </nb-tab>
+          
+          <nb-tab tabTitle="Devices">
+            <chart type="pie" [data]="dataDevice" [options]="optionsDevice"></chart>
+          </nb-tab>
+        </nb-tabset>
+      </div>
+    </div>
+
+    <nb-alert *ngIf="showError" status="danger">Error data load!</nb-alert>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton hero status="primary" (click)="dismiss()">CLOSE</button>
+  </nb-card-footer>
+</nb-card>

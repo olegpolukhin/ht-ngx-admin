@@ -1,0 +1,23 @@
+@import '../@theme/styles/themes';
+
+@include nb-install-component() {
+
+  nb-card.medium-card {
+    height: 576px !important;
+  }
+
+  /deep/ router-outlet + * {
+    display: block;
+    animation: fade 1s;
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  }
+}

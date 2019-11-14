@@ -1,0 +1,12 @@
+<nb-card-header>{{ ecfName }}</nb-card-header>
+<nb-card-body>
+  <div class="chart-info">
+    <div class="title">Average daily</div>
+    <div class="value">{{ dailyIncome | ngxNumberWithCommas }}</div>
+    <div class="delta" title="Comparison with the last period" [class.up]="delta.up" [class.down]="!delta.up">
+      {{ delta.value }}%
+    </div>
+  </div>
+  <ngx-earning-live-update-chart [liveUpdateChartData]="liveUpdateChartData">
+  </ngx-earning-live-update-chart>
+</nb-card-body>

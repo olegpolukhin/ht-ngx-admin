@@ -1,0 +1,12 @@
+<div class="col-md-9 float-left">
+    <div *ngFor="let item of buttons" class="col-md-2 sub-button">
+        <button shape="rectangle" class="btn btn-rectangle btn-primary"
+            (click)="setRange(item.value)">{{ item.name }}</button>
+    </div>
+</div>
+<div class="col-md-3 float-right">
+    <nb-rangepicker #rangepickersub></nb-rangepicker>
+    <input [(ngModel)]="nbRangepickerValue" (ngModelChange)="nbRangepickerChange()"
+        placeholder="{{paramDateInit['dateFrom'] + ' - ' + paramDateInit['dateTo']}}" name="dateRageMuu"
+        class="cs-input-sm col-md-12" #dateRageMuu nbInput [nbDatepicker]="rangepickersub">
+</div>

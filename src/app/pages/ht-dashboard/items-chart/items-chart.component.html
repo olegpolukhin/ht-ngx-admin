@@ -1,0 +1,5 @@
+<nb-card-front *ngFor="let item of blockChart" class="col">
+  <nb-card size="xsmall" class="cs-earning">
+    <ngx-earning-card-front [ecfKey]="item.key" [ecfName]="item.name" [data]="data"></ngx-earning-card-front>
+  </nb-card>
+</nb-card-front>

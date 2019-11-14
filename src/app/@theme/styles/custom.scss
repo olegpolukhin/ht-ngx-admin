@@ -1,0 +1,130 @@
+@mixin ngx-customs-theme() {
+  $global-fontSize: 14px;
+  $cs-inputs: 49px;
+  $cs-step: 25px;
+
+  html {
+    font-size: $global-fontSize;
+  }
+
+  .cdk-global-scrollblock {
+    position: initial !important;
+    width: initial !important;
+    overflow: hidden !important;
+  }
+
+  .layout nb-layout-header nav {
+    max-width: 100% !important;
+  }
+
+  nb-layout.window-mode {
+    padding-top: 0;
+  }
+
+  .scrollable-container {
+    max-width: 100% !important;
+    height: calc(100vh - 0rem) !important;
+  }
+
+  .btn-hero {
+    outline: none;
+  }
+
+  .float {
+    &-left {
+      float: left;
+    }
+    &-right {
+      float: right;
+    }
+  }
+
+  .step {
+    &-right {
+      margin-right: $cs-step;
+    }
+    &-left {
+      margin-left: $cs-step;
+    }
+  }
+
+  .cs-btn-reset {
+    width: 60px;
+    flex: none;
+    padding: 0;
+    i {
+      font-size: 24px;
+    }
+  }
+
+  .cs-input {
+    &-sm {
+      height: $cs-inputs;
+    }
+  }
+
+  .sub-button {
+    display: inline;
+  }
+
+  .cs-option {
+    &-sm {
+      height: $cs-inputs;
+
+      > button {
+        height: $cs-inputs;
+      }
+    }
+  }
+
+  .page-title {
+    margin: 0;
+    padding: 0;
+    font-size: 2 rem;
+    font-weight: 600;
+  }
+
+  .table-option-limit {
+    width: 100px;
+    float: right;
+    margin-bottom: 10px;
+  }
+  .table-option-limit-label span {
+    line-height: 45px;
+    margin-right: 20px;
+  }
+  p.table-info {
+    background: transparent;
+    margin-top: 10px;
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  // 1440
+
+  /* Mobile Styles */
+  @media only screen and (max-width: 1750px) {
+    ngx-app-daterange-picker .col-md-2.sub-button {
+      padding: 5px;
+      top: 8px;
+    }
+    ngx-app-daterange-picker button.btn {
+      padding: 5px;
+    }
+
+    ng2-smart-table table tr td,
+    ng2-smart-table table tr th {
+      padding: 5px;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    ng2-smart-table table tr td {
+      font-size: 12px;
+    }
+
+    ng2-smart-table table tr th a {
+      font-size: 14px;
+    }
+  }
+}

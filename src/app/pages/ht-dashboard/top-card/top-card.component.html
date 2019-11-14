@@ -1,0 +1,12 @@
+<nb-card-header>{{ title }}</nb-card-header>
+<nb-card-body>
+  <div class="chart-info">
+
+    <div class="value">{{ value | ngxNumberWithCommas }}</div>
+
+    <div class="delta">
+      {{ stillActive | ngxNumberWithCommas }} still active
+    </div>
+  </div>
+
+</nb-card-body>

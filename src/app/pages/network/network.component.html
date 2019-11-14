@@ -1,0 +1,110 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <nb-card>
+      <nb-card-body>
+        <h1 class="page-title">Networks</h1>
+      </nb-card-body>
+    </nb-card>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <nb-card>
+          <nb-card-body>
+            <ngx-app-daterange-picker [(ngModel)]="dateRangeT" [placeholder]="dateRangeT" name="dateRage" #dateRange>
+            </ngx-app-daterange-picker>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <nb-card>
+          <nb-card-body>
+            <div class="row">
+              <nb-tabset class="col-md-12">
+                <nb-tab tabTitle="Network Info">
+                  <div class="row" style="width: 100%;padding: 20px;">
+
+                    <div class="col-md-2">
+                      <h5>Select network</h5>
+                      <br>
+                      <div id="selectItemNetwork" class="col-md-12">
+                        <nb-select placeholder="{{ networksSelected || networksDefault }}" shape="rectangle"
+                          [(ngModel)]="networksSelected" name="networksSelected" fullWidth>
+                          <nb-option *ngFor="let item of networksList" value="{{item}}">{{ clearNameNetwork(item) }}
+                          </nb-option>
+                        </nb-select>
+                      </div>
+                    </div>
+                    <div class="col-md-9">
+                      <h5>Detailed network statistics for {{networksSelected || networksDefault }}</h5>
+                      <br>
+                      <div class="chartNetwork">
+                        <ngx-chartbase [dateRange]="dateRangeT" [network]="networksSelected || networksDefault">
+                        </ngx-chartbase>
+                      </div>
+                    </div>
+                  </div>
+
+                  <br>
+                  <div class="position-date">Data for {{getFormateDate(dateRangeT.start)}} -
+                    {{getFormateDate(dateRangeT.end)}}</div>
+                  <hr><br>
+
+                  <div class="row" style="width: 100%;padding: 20px;">
+                    <div class="col-lg-12">
+                      <ngx-table-base [dateRange]="dateRangeT" [network]="networksSelected || networksDefault">
+                      </ngx-table-base>
+                    </div>
+                  </div>
+                </nb-tab>
+
+                <nb-tab tabTitle="Aggregated Info">
+                  <div class="row" style="width: 100%;padding: 20px;">
+                    <div class="col-md-2">
+                      <h5>Select Metric</h5>
+                      <br>
+                      <div id="selectItemNetwork" class="col-md-12">
+                        <nb-select placeholder="...Select..." shape="rectangle" [(ngModel)]="metricSelected"
+                          name="metricSelected" fullWidth>
+                          <nb-option *ngFor="let item of metricsList" value="{{item}}">{{ item }}</nb-option>
+                        </nb-select>
+                      </div>
+                    </div>
+                    <div class="col-md-9" *ngIf="metricSelected">
+                      <h5>Detailed network statistics by {{metricSelected}} metric</h5>
+                      <br>
+                      <div class="chartNetwork">
+                        <ngx-chartmetric [dateRange]="dateRangeT" [metric]="metricSelected"></ngx-chartmetric>
+                      </div>
+                    </div>
+                    <div class="col-md-9" *ngIf="!metricSelected">
+                      <h5>Select a metric to display a graph.</h5>
+                      <br>
+                      <div class="chartNetwork"></div>
+                    </div>
+                  </div>
+
+                  <br>
+                  <div class="position-date">Data for {{getFormateDate(dateRangeT.start)}} -
+                    {{getFormateDate(dateRangeT.end)}}</div>
+                  <hr><br>
+
+                  <div class="row" style="width: 100%;padding: 20px;">
+                    <div class="col-lg-12">
+                      <ngx-table-metric [dateRange]="dateRangeT" [metric]="metricSelected">
+                      </ngx-table-metric>
+                    </div>
+                  </div>
+                </nb-tab>
+              </nb-tabset>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+
+  </div>
+</div>

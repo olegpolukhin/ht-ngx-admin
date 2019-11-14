@@ -1,0 +1,27 @@
+@import "../../../@theme/styles/themes";
+@import "~bootstrap/scss/mixins/breakpoints";
+@import "~@nebular/theme/styles/global/breakpoints";
+
+@include nb-install-component() {
+  .cs-earning {
+    position: relative;
+  }
+
+  ngx-earning-card-front {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  /deep/ .cs-earning nb-card-header {
+    display: flex;
+    justify-content: space-between;
+    @include nb-rtl(flex-direction, row-reverse);
+    padding-left: 1rem;
+  }
+
+  /deep/ .cs-earning nb-card-body {
+    overflow: hidden;
+    display: flex;
+  }
+}

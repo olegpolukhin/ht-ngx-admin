@@ -1,0 +1,9 @@
+<nb-layout [center]="layout.id === 'center-column'" windowMode>
+    <nb-layout-column class="main-content">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <ng-content select="router-outlet"></ng-content>
+            </div>
+        </div>
+    </nb-layout-column>
+</nb-layout>

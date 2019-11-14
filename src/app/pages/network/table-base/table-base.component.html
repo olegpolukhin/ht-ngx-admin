@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="input-group col-md-6 float-left">
+    <button type="reset" shape="rectangle" nbPopover="Reset all defaults" nbPopoverTrigger="hint"
+      nbPopoverPlacement="bottom" class="btn btn-rectangle btn-primary col-md-2 step-right cs-btn-reset"
+      (keydown.enter)="false" (click)="onEventReset()"><i class="far fa-times-circle"></i></button>
+
+    <input [(ngModel)]="searchT" (change)="updateTable()" name="search" type="text" class="cs-input-sm col-md-6" nbInput
+      fullWidth placeholder="Search Domain">
+  </div>
+  <div class="input-group col-md-6 float-left">
+    <div style="position: absolute; right: 15px;">
+      <label class="table-option-limit-label">
+        <span>Show rows: </span>
+        <nb-select class="table-option-limit" placeholder="{{limitT}}" (selectedChange)="updateTable()"
+          shape="rectangle" [(ngModel)]="limitT" name="limitT" fullWidth>
+          <nb-option *ngFor="let item of selectSizes" value="{{ item }}">{{ item }}</nb-option>
+        </nb-select>
+      </label>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h2 *ngIf="searchT">Search For: {{searchT}}</h2>
+</div>
+
+<ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
